@@ -7,6 +7,8 @@ from logger import log_state
 
 
 def start_game(screen):
+    clocker = pygame.time.Clock()
+    dt = 0.0
     while True:
         log_state()
         for event in pygame.event.get():
@@ -14,6 +16,7 @@ def start_game(screen):
                 return
         screen.fill("black")
         pygame.display.flip()
+        dt = clocker.tick(60) / 1000
 
 
 def main():
@@ -23,6 +26,7 @@ def main():
         f"Screen height: {SCREEN_HEIGHT}"
     )
     pygame.init()
+
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     start_game(screen)
 
